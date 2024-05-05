@@ -31,3 +31,14 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 ```
+
+# ENV
+
+For local development ".env" file is needed to be located in the root directory
+
+Example file 
+```md
+REDIS_HOST=redis
+REDIS_PORT=6379
+USER_NOTIFICATION_TIMEOUT_MS=120000
+```
