@@ -11,7 +11,7 @@ import { UserCreatedEvent } from './events/user-created.event';
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
-    private readonly logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   @EventPattern('user_created')
@@ -19,11 +19,19 @@ export class UsersController {
     @Payload() data: UserCreatedEvent,
   ) {
     try {
-      this.logger.log('Received user created event', JSON.stringify(data));
+      this.logger.log(
+        'Received user created event',
+        JSON.stringify(data),
+      );
       await this.usersService.handleUserCreated(data);
-      this.logger.log('User created event handled successfully.');
+      this.logger.log(
+        'User created event handled successfully.',
+      );
     } catch (error) {
-      this.logger.error(`Error handling user created event: ${error.message}`, error.stack);
+      this.logger.error(
+        `Error handling user created event: ${error.message}`,
+        error.stack,
+      );
       throw error;
     }
   }
